@@ -114,3 +114,11 @@ Type in terminal:
 ```bash
 ./build.sh
 ```
+
+
+<br>
+<br>
+<br>  
+  
+> ###### No part of this code repository may be copied, reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, mechanical, photocopying, recording, or otherwise, without the prior written permission of the repository owner.    
+<div style='text-align: center;'> &copy; 2019, Ketan Singh | All Rights Reserved </div>     
