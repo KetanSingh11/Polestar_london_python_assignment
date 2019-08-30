@@ -59,7 +59,7 @@ Read more about them [here](README_more.md).
 
 1. Clone this repo:
     ```bash
-    git clone https://github.com/KetanSingh11/Polestart_london_python_assignment.git
+    https://github.com/KetanSingh11/Polestar_london_python_assignment.git
     ```
 
 2. Navigate to the folder:
