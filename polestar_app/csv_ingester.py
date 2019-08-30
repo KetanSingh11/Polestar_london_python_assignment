@@ -45,7 +45,7 @@ def csv_reader(csv_filename):
 
             return "{} rows inserted to database table '{}'".format(row_count, ShipData.__tablename__), 200
         else:
-            msg = "File '{}' not found in path {}! Please check if file path exists.".format(csv_filename, os.getcwd)
+            msg = "File '{}' not found in path {}! Please check if file path exists.".format(csv_filename, os.getcwd())
             logger.error(msg)
             return msg, 404
     except Exception as e:
