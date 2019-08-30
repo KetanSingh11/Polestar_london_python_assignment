@@ -101,12 +101,13 @@ At this point the database inside the container is `blank`. Lets fill it.
 2. Finally, open the file [index.html](../index.html) in any web browser of your choice.
    You should be presented with the below page!!
 
-
+    ![screenshot](Screenshot.png)
+    
 <br>
 
 ## TL;DR
 
-If you have read this far, and are confused with the steps, I have a helper script for you :)   
+If you have read this far, and are confused with the steps, I have a helper script for you :wink:    
 Just run [build.sh](build.sh) on your terminal, and everything will run in one go.   
 
 Type in terminal:
