@@ -2,7 +2,7 @@
 Here are some internal API's as well, for more control and simplicity sake. Read more about them [here](README_more.md).
 
 - **init_db** `/api/init_db/`    
-    Initializes the database - reads this [csv](positions.csv) and writes to the local database (sqlite).
+    Initializes the database - reads this [csv](../positions.csv) and writes to the local database (sqlite).
     - Methods: _GET, DELETE_
     
     Example:
