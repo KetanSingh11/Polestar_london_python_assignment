@@ -45,6 +45,11 @@ Build on the below tech-stack:
     ```bash
      curl -X GET "http://localhost:5010/test/"
     ```
+    
+    
+### Internal APIs:  
+There are some internal API's as well, for more db control and simplicity sake.  
+Read more about them [here](README_more.md).
 
 <br>
 
@@ -98,6 +103,8 @@ At this point the database inside the container is `blank`. Lets fill it.
 
 
 <br>
+
+## TL;DR
 
 If you have read this far, and are confused with the steps, I have a helper script for you :)   
 Just run [build.sh](build.sh) on your terminal, and everything will run in one go.   
