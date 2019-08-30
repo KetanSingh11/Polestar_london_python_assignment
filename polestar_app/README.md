@@ -50,7 +50,7 @@ Build on the below tech-stack:
 
 ---
 
-## Steps to run
+## Steps to run (detailed)
 
 1. Clone this repo:
     ```bash
@@ -97,13 +97,12 @@ At this point the database inside the container is `blank`. Lets fill it.
    You should be presented with the below page!!
 
 
+<br>
 
-curl "http://localhost:5010/api/init_db"
+If you have read this far, and are confused with the steps, I have a helper script for you :)   
+Just run [build.sh](../build.sh) on your terminal, and everything will run in one go.   
 
-Build a docker image locally (using Ubuntu 19.04)
-docker build -t polestar_app:latest .
-
-docker run -d -p 5000:8000 --name my_polestar_app polestar_app:latest
-
-docker rm my_polestar_app
-
+Type in terminal:
+```bash
+./build.sh
+```

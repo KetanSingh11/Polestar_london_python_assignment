@@ -11,15 +11,29 @@ rm -rf db/*.db
 # build docker image
 docker build -t polestar_app:latest .
 
-# create and run a new container
+# create and run a new container (deamon mode)
+# but before, remove any old container with the same name
+docker stop my_polestar_app
+docker rm my_polestar_app
 docker run -d -p 5010:8010 --name my_polestar_app polestar_app:latest
 
+# wait for some seconds for docker container to come up, else will return blanks
+printf "\n> sleeping 10 sec... \n"
+sleep 10
+
 # test api call
+printf "\n> Making Test API call... \n"
 curl -X GET "http://localhost:5010/test/"
+
+printf "\n> sleeping 5 sec... \n"
+sleep 5
 
 # init database with csv file
 curl -X GET "http://localhost:5010/api/init_db/"
 
+
 # open index.html in browser
-echo "Please open 'index.html' in your browser now."
+printf "\n\n"
+printf '\e[1;34m%-6s\e[m' "  >> Please open 'index.html' in your browser now. <<"
+printf "\n\n"
 
