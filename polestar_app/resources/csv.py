@@ -9,7 +9,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('action', type=str, required=True, help="This field is required! Possible values ['delete']")
 
 class CSVResource(Resource):
-    _default_csv_filename = "../positions.csv"
+    _default_csv_filename = "positions.csv"
 
     def get(self):
         """ read csv and write to database """
