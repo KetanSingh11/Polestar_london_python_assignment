@@ -8,6 +8,9 @@
 # delete database file, if exists
 rm -rf db/*.db
 
+# delete *.csv file at current directory
+rm -rf *.csv
+
 # copy positions.csv from ../ to current directory
 cp ../positions.csv .
 
@@ -28,8 +31,8 @@ docker run -d -p 5010:8010 --name my_polestar_app polestar_app:latest
 ##docker exec -it my_polestar_app /bin/bash
 
 # wait for some seconds for docker container to come up, else will return blanks
-printf "\n> sleeping 10 sec... \n"
-sleep 10
+printf "\n> sleeping 6 sec... \n"
+sleep 6
 
 # test api call
 printf "\n> Making Test API call... \n"

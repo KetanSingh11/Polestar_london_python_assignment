@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testbed</title>
+</head>
+<body>
+
+<p>/test</p>
+<p id="test">here</p>
+
+<p>/api/ships/</p>
+<p id="ships"></p>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+</script>
+
+<script type="text/javascript">
+      $(document).ready(function () {
+
+        $.ajax({
+          url: 'http://localhost:8010/test/',
+          dataType: 'json',
+          // headers: { 'Access-Control-Allow-Origin': '*' }
+        }).done(function(data) {
+          console.log(data);
+          document.getElementById("test").innerHTML=data;
+        });
+      });
+</script>
+
+<script type="text/javascript">
+      $(document).ready(function () {
+
+        $.ajax({
+          url: 'http://localhost:8010/api/ships/',
+          dataType: 'json',
+          // headers: { 'Access-Control-Allow-Origin': '*' }
+        }).done(function(data) {
+          console.log(data);
+          document.getElementById("ships").innerHTML=data[0];
+        });
+      });
+</script>
+
+</body>
+</html>
