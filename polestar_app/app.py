@@ -15,7 +15,14 @@ import sys
 # app.secret_key = "dlka34j90(&83nan341!#3d"
 
 api = Api(app)
-CORS(app)
+cors = CORS(app, resources={r"*": {"origins": "*"}})
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
 class health(Resource):
     def get(self):
@@ -26,8 +33,8 @@ class health(Resource):
 
 # register APIs
 ## my internal api's
-api.add_resource(health, "/test")
-api.add_resource(CSVResource, "/api/init_db")
+api.add_resource(health, "/test/")
+api.add_resource(CSVResource, "/api/init_db/")
 api.add_resource(ShipResource, "/api/shipsdata/")
 
 ## asked in assignment
@@ -45,14 +52,14 @@ if __name__ == "__main__":
     # from db import db
     # db.init_app(app)
     # wipe_all_db_files()
-    default_port = 8000
+    default_port = 8010
     try:
         app = create_app()
         if len(sys.argv) == 2:
-            port = sys.argv[1]
-            app.run(port=port, debug=True)
+            port = int(sys.argv[1])
+            app.run(host="0.0.0.0", port=port, debug=True)
         else:
-            app.run(port=default_port, debug=True)
+            app.run(host="0.0.0.0", port=default_port, debug=True)
     except Exception as e:
         log.exception(e)
 

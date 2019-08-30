@@ -25,7 +25,7 @@ class IMO(db.Model):
 
 
 class ShipData(db.Model):
-    """ contains live ship locations"""
+    """ contains live ship locations (latitudes, longitude) """
     __tablename__ = 'shipdata'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)

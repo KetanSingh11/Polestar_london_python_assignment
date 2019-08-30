@@ -40,17 +40,19 @@
         }).addTo(map);                                                                                                   
 
         $.ajax({
-          url: 'http://localhost:8000/api/ships/',
-          dataType: 'json'
+          url: 'http://localhost:8010/api/ships/',
+          dataType: 'json',
+          headers: { 'Access-Control-Allow-Origin': '*' }
         }).done(function(ships_data) {
-          console.log(ships_data)
+          console.log(ships_data);
           // Got the current Ships in database. Now get the Positions list for
           // each one of the ships.
           for (i = 0; i < ships_data.length; i++) {
             (function (currentShip) {
               $.ajax({
-                url: 'http://localhost:8000/api/positions/' + currentShip.imo,
-                dataType: 'json'
+                url: 'http://localhost:8010/api/positions/' + currentShip.imo,
+                dataType: 'json',
+                headers: { 'Access-Control-Allow-Origin': '*' }
               }).done(function(positions_data) {
                 // Add current position marker (1st position in the list).
                 var latest = positions_data[0];

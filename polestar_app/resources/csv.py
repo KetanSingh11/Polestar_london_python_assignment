@@ -12,15 +12,26 @@ class CSVResource(Resource):
     _default_csv_filename = "../positions.csv"
 
     def get(self):
-        # load Shipdata table
-        resp, status = csv_reader(self._default_csv_filename)
-        # load imo table
-        imo_resource = IMOResource()
-        imo_resource.create_base_data()
+        """ read csv and write to database """
+        try:
+            # load Shipdata table
+            resp_ship, status_ship = csv_reader(self._default_csv_filename)
+            # load imo table
+            imo_resource = IMOResource()
+            resp_imo, status_imo = imo_resource.create_base_data()
 
-        return {'message': resp}, status
+            if status_ship == status_imo == 200:
+                return {'ShipData': resp_ship, 'IMO': resp_imo}, status_ship
+            else:
+                return {'message': 'unsuccessful', 'ShipData': resp_ship, 'IMO': resp_imo}, 500
+        except Exception as e:
+            log.exception(e)
+            return {"message": str(e)}, 500
 
     def post(self):
+        """
+        PRODEED WITH CAUTION: deletes the entire database file itself - unrecoverable
+        """
         try:
             data = parser.parse_args()
             action = data['action']
@@ -40,12 +51,13 @@ class CSVResource(Resource):
             return {"message": str(e)}, 500
 
     def delete(self):
+        """ Empty ShipData table (only) """
         try:
             res = delete_all_table_rows(ShipData.__tablename__)
             msg = "Deleted all rows of table '{}'".format(ShipData.__tablename__)
             log.warn(msg)
 
-            return {'message': "Rows Deleted: {}".format(res)}, 200
+            return {'message': "Table: {}, Rows Deleted: {}".format(ShipData.__tablename__, res)}, 200
         except Exception as e:
             log.exception(e)
             return {"message": str(e)}, 500

@@ -9,27 +9,30 @@ class IMOResource(Resource):
 
     def create_base_data(self):
         """
-        Mathilde Maersk: IMO number ​9632179​
-        Australian Spirit​: IMO number ​9247455​
-        MSC Preziosa​: IMO number ​9595321
-
-        :return:
+        Creates 3 rows on the fly and inserts into IMO table.
+        Drops all rows before re-inserting.
         """
-        log.info("Dropping all rows of imo table first.")
-        self.delete()
+        try:
+            log.info("Dropping all rows of 'imo' table first...")
+            self.delete()
 
-        a = IMO(id=9632179, name="Mathilde Maersk")
-        b = IMO(id=9247455, name="Australian Spirit")
-        c = IMO(id=9595321, name="MSC Preziosa")
-        db.session.add(a)
-        db.session.add(b)
-        db.session.add(c)
-        db.session.commit()
-        log.info("Inserted 3 base IMOs into imo table.")
+            a = IMO(id=9632179, name="Mathilde Maersk")
+            b = IMO(id=9247455, name="Australian Spirit")
+            c = IMO(id=9595321, name="MSC Preziosa")
+            db.session.add(a)
+            db.session.add(b)
+            db.session.add(c)
+            db.session.commit()
+            log.info("Inserted 3 base IMOs into 'imo' table.")
+            return "{} rows inserted to database table '{}'".format(3, self.__model__.__tablename__), 200
+        except Exception as e:
+            log.exception(e)
+            return str(e), 500
 
     def get(self):
-        ''' get all the IMOs in the db '''
-        #todo: should return paginated responses
+        """ get all the IMOs from the db """
+        # todo: should return paginated responses
+
         try:
             self.create_base_data()
 
@@ -44,6 +47,7 @@ class IMOResource(Resource):
             return {"message": str(e)}, 500
 
     def delete(self):
+        """Empty IMO table (only) """
         try:
             res = delete_all_table_rows(IMO.__tablename__)
             msg = "Deleted all rows of table '{}': {} rows".format(IMO.__tablename__, res)

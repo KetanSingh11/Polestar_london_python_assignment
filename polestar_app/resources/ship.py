@@ -8,8 +8,9 @@ class ShipResource(Resource):
     __model__ = ShipData
 
     def get(self):
-        ''' get all the ships in the db '''
-        #todo: should return paginated responses
+        """ get all the ships into the db """
+        # todo: should return paginated responses
+
         try:
             # import pdb; pdb.set_trace()
             # shipdata = ShipData.query.all()
@@ -19,7 +20,7 @@ class ShipResource(Resource):
                 data.append(sd.to_json())
 
             if len(data) == 0:
-                return {'message': 'No data in shipdata table.'}, 200
+                return {'message': 'No data in shipdata table.'}, 204
 
             return {'shipsdata': data}, 200
         except Exception as e:
@@ -27,6 +28,7 @@ class ShipResource(Resource):
             return {"message": str(e)}, 500
 
     def delete(self):
+        """ Empty ShipData table (only) """
         try:
             res = delete_all_table_rows(ShipData.__tablename__)
             msg = "Deleted all rows of table '{}'".format(ShipData.__tablename__)

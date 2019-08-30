@@ -137,6 +137,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Database file
 *.db
 
 ### Example user template template
