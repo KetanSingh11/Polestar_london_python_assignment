@@ -88,7 +88,7 @@ Build on the below tech-stack:
     
 At this point the database inside the container is `blank`. Lets fill it.   
 1. Init the DB.   
-   This will load the csv file [positions.csv](positions.csv) and insert it into the database.
+   This will load the csv file [positions.csv](../positions.csv) and insert it into the database.
     ```bash
     curl -X GET "http://localhost:5010/api/init_db/"
     ```   
@@ -100,7 +100,7 @@ At this point the database inside the container is `blank`. Lets fill it.
 <br>
 
 If you have read this far, and are confused with the steps, I have a helper script for you :)   
-Just run [build.sh](../build.sh) on your terminal, and everything will run in one go.   
+Just run [build.sh](build.sh) on your terminal, and everything will run in one go.   
 
 Type in terminal:
 ```bash
