@@ -77,7 +77,6 @@ Read more about them [here](README_more.md).
    __This binds localhost port 5010 to docker port 8010.__    
     ```bash
     docker run -d -p 5010:8010 --name my_polestar_app polestar_app:latest
-    docker run -it -p 5010:8010 --name my_polestar_app polestar_app:latest
     ```
 
 5. Now, test if the setup is working fine and connections are reaching the docker container (hopefully :)).
